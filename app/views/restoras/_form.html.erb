@@ -1,0 +1,77 @@
+<div class="row">
+<div class="col-sm-2"> 
+</div>
+<div class="col-sm-8">
+<%= form_for(@restora) do |form| %>
+  <div class="form-group">
+    <% if restora.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(restora.errors.count, "error") %> prohibited this restora from being saved:</h2>
+
+        <ul>
+          <% restora.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :location %>
+      <%= form.text_field :location, class: "form-control"  %>
+    </div>
+
+    <div class="field">
+      <%= form.label :image %>
+      <%= image_tag(@restora.image.url) if @restora.image && @restora.image.url %>
+      <%= form.file_field :image,  class: "form-control" %>
+      <%= form.hidden_field :image_cache %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description,  class: "form-control" %>
+    </div>
+    <h2>Menu</h2>
+    <h3>Break fasts </h3>
+    <%= form.fields_for :break_fasts do |s| %>  
+      <div class="form-inline">
+        <div class="field">
+          <%= s.label :item %>
+          <%= s.text_field :item, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= s.label :cost %>
+          <%= s.number_field :cost, class: "form-control" %>
+        </div>
+      </div>
+    <% end %>
+    <h3> Lunch </h3>
+    <%= form.fields_for :lunches do |b| %>
+      <div class="form-inline">
+        <div class="field">
+          <%= b.label :item %>
+          <%= b.text_field :item, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= b.label :cost %>
+          <%= b.number_field :cost, class: "form-control" %>
+        </div> 
+      </div>
+    <% end %>
+    <div class="actions">
+      <%= form.submit class: 'btn-primary' %>
+    </div>
+  </div>
+<% end %>
+</div>
+<div class="col-sm-2"></div>
+</div> 
+

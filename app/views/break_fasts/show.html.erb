@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @break_fast.item %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @break_fast.cost %>
+</p>
+
+<p>
+  <strong>Restora:</strong>
+  <%= @break_fast.restora_id %>
+</p>
+
+<%= link_to 'Edit', edit_break_fast_path(@break_fast) %> |
+<%= link_to 'Back', break_fasts_path %>

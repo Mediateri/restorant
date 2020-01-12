@@ -1,0 +1,53 @@
+
+
+
+<div class="card-deck">
+  <div class="card bg-light">
+    <div class="card-body ">
+    <table class="table table-borderless">
+       <tr>
+        <td> <strong>Name:</strong></td>
+        <td><%= @restora.name %></td>
+      </tr>
+      <tr>
+        <td><strong>Location:</strong></td>
+        <td><%= @restora.location %></td>
+      </tr>
+      <tr>
+        <td>  <strong>Description:</strong></td>
+        <td><%= @restora.description %></td>
+      </tr>
+    </table>
+    </div>
+  </div>
+  <div class="card bg-light">
+    
+    <div class="card-body ">
+    <h2>menu</h2>
+    <h3>Break fasts</h3>
+    <% @restora.break_fasts.each do |poor| %>
+      <% if @restora.id == poor.restora_id %>
+        <p>
+        <table class="table table-borderless">
+          <tr>
+            <td><%= poor.item %></td>
+            <td><%= poor.cost %>   Frw</td>
+          </tr>
+        </table>
+      <% end %>
+    <% end %>
+    <h3>Lunch</h3>
+    <% @restora.lunches.each do |poor| %>
+      <% if @restora.id == poor.restora_id %>
+      <table class="table table-borderless">
+       <tr>
+        <td><%= poor.item %></td>
+        <td><%= poor.cost %>   Frw</td>
+      </tr>
+    </table>
+    
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+<div>

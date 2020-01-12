@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restorant</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top text-white">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+             MyRestorant
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> 
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <%= link_to 'Home', restoras_path,  class:'  btn btn-outline-primary'%>
+                </li>
+              <li class="nav-item">
+                <%= link_to 'restorants', restoras_path, :class => '  btn btn-outline-primary' %> 
+              </li>
+              <li class="nav-item">
+                <%= link_to "Contact", restoras_path,   class: '  btn btn-outline-primary'  %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "New Restorant",  new_restora_path,   :class => '  btn btn-outline-primary'  %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class="row">
+      <div class="col-sm-1"> </div>
+      <div class="col-sm-10"><%= yield %></div>
+      <div class="col-sm-1"> </div>
+    </div> 
+    
+  </body>
+</html>
