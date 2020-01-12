@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+body{
+    margin-top: 20px;
+}
+.mine{
+    padding-top: 50px;
+}
+.color{
+    color: #ff6000 !important;
+   border: #ff6000 !important;
+}
+.colors{
+    background-color: #ff6000 !important;
+}
+ 

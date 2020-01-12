@@ -16,7 +16,7 @@ class RestorasController < ApplicationController
   end
 
   def new
-    @restora = Restora.new
+    @restora = current_user.restoras.build
     @restora.break_fasts.build 
     @restora.lunches.build 
   end
@@ -25,7 +25,7 @@ class RestorasController < ApplicationController
   end
 
   def create
-    @restora = Restora.new(restora_params)
+    @restora = current_user.restoras.build(restora_params)
 
     respond_to do |format|
       if @restora.save

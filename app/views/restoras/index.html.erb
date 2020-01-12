@@ -1,17 +1,20 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Restoras</h1>
+
+  
+<h4>Search restorant with Location</h4>
+<div class="jumbotron color">
 <%= form_tag(restoras_path, method: :get) do  %>
   <div class="form-inline my-2 my-lg-0">
     <%= text_field_tag :term, params[:term], class: "form-control mr-sm-2", placeholder: "Search with location" %>
     <%= submit_tag 'Search', class: "btn btn-outline-success my-2 my-sm-0"  %>
   </div>
 <% end %>
+</div>
 <div class="card-columns">
 <% @restoras.each do |restora| %>
-  <a href="<%= restora_path(restora.id) %>">
-    <div class="card" style="width:400px">
-      <%= image_tag restora.image.url, class: "rounded", size: "100x100" unless restora.image.url.blank? %> 
+  <a href="<%= restora_path(restora.id) %>" class= 'color'>
+    <div class="card"  >
+      <%= image_tag restora.image.url, class: "card-img-top", size: "" unless restora.image.url.blank? %> 
       <div class="card-body">
         <%= restora.name %> : <%= restora.location %>
       </div>
