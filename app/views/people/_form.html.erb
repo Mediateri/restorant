@@ -1,0 +1,35 @@
+<%= form_with(model: person, local: true) do |form| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+
+  <div class="announcement_title">
+  <%= form.label :District %>
+  <%= form.select(:Disrict, options_for_select([@district.name ], params[:disricts] ), class:"select") %>
+
+
+
+</div>
+  <div class="field">
+    <%= form.label :sectors %>
+    <%= form.text_field :sectors %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

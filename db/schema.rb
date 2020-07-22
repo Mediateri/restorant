@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_11_214328) do
+ActiveRecord::Schema.define(version: 2020_07_16_091831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2020_01_11_214328) do
     t.index ["restora_id"], name: "index_break_fasts_on_restora_id"
   end
 
+  create_table "disricts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "lunches", force: :cascade do |t|
     t.string "item"
     t.integer "cost"
@@ -33,8 +39,10 @@ ActiveRecord::Schema.define(version: 2020_01_11_214328) do
     t.index ["restora_id"], name: "index_lunches_on_restora_id"
   end
 
-  create_table "meddies", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "name"
+    t.string "disricts"
+    t.string "sectors"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,6 +56,14 @@ ActiveRecord::Schema.define(version: 2020_01_11_214328) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_restoras_on_user_id"
+  end
+
+  create_table "sectors", force: :cascade do |t|
+    t.string "name"
+    t.bigint "disrict_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["disrict_id"], name: "index_sectors_on_disrict_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,4 +81,5 @@ ActiveRecord::Schema.define(version: 2020_01_11_214328) do
   add_foreign_key "break_fasts", "restoras"
   add_foreign_key "lunches", "restoras"
   add_foreign_key "restoras", "users"
+  add_foreign_key "sectors", "disricts"
 end

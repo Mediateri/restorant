@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Disricts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @disricts.each do |disrict| %>
+      <tr>
+        <td><%= disrict.name %></td>
+        <td><%= link_to 'Show', disrict %></td>
+        <td><%= link_to 'Edit', edit_disrict_path(disrict) %></td>
+        <td><%= link_to 'Destroy', disrict, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Disrict', new_disrict_path %>

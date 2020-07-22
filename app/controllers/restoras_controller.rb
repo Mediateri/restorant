@@ -1,7 +1,7 @@
 class RestorasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_restora, only: [:show, :edit, :update, :destroy]
-
+ 
 
   def index
     if params[:term]
@@ -19,6 +19,13 @@ class RestorasController < ApplicationController
     @restora = current_user.restoras.build
     @restora.break_fasts.build 
     @restora.lunches.build 
+    n=0
+    if params[:sort_priority]  
+      n=n+1
+      n.times{@restora.break_fasts.build }
+    end
+    
+    
   end
 
   def edit
@@ -26,7 +33,7 @@ class RestorasController < ApplicationController
 
   def create
     @restora = current_user.restoras.build(restora_params)
-
+    
     respond_to do |format|
       if @restora.save
         format.html { redirect_to @restora, notice: 'Restora was successfully created.' }
@@ -37,6 +44,7 @@ class RestorasController < ApplicationController
       end
     end
   end
+   
 
   def update
     respond_to do |format|
@@ -65,4 +73,5 @@ class RestorasController < ApplicationController
     def restora_params
       params.require(:restora).permit(:name, :location, :image, :image_cache, :description,  break_fasts_attributes: [:id, :item, :cost],  lunches_attributes: [:id, :item, :cost])
     end
+    
 end
